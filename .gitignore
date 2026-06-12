@@ -1,0 +1,25 @@
+# Bicep generated ARM templates
+*.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+*.swp
+*.swo
+.idea/
+
+# .NET
+bin/
+obj/
+*.user
+*.suo
+src/**/publish/
+output/
+
+# Secrets
+appsettings.*.json
+!appsettings.json
+*.pfx
+*.env
