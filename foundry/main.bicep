@@ -92,8 +92,6 @@ module foundryProject '../../azure-platform-iac/modules/ai/foundry-project.bicep
     name: '${name}-proj-${environment}'
     location: location
     hubId: foundryHub.outputs.hubId
-    aiServicesId: foundryHub.outputs.aiServicesId
-    aiSearchServiceId: aiSearch.outputs.searchServiceId
     environment: environment
   }
 }
