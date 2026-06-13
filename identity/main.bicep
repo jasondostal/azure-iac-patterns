@@ -57,7 +57,7 @@ resource resourceGroup 'Microsoft.Resources/resourceGroups@2024-03-01' = {
 // ── Entra ID App Registration Config Contracts ──────────────────────────────
 
 // Internal employee API — config contract (app reg created via CLI)
-module internalApiApp './modules/entra-app-registration.bicep' = {
+module internalApiApp '../../azure-platform-iac/modules/identity/entra-app-registration.bicep' = {
   name: '${name}-api-internal-${environment}'
   scope: resourceGroup
   params: {
@@ -78,7 +78,7 @@ module internalApiApp './modules/entra-app-registration.bicep' = {
 }
 
 // M2M client credential app — config contract (app reg created via CLI)
-module m2mApp './modules/entra-app-registration.bicep' = if (!empty(m2mClientId)) {
+module m2mApp '../../azure-platform-iac/modules/identity/entra-app-registration.bicep' = if (!empty(m2mClientId)) {
   name: '${name}-api-m2m-${environment}'
   scope: resourceGroup
   params: {
@@ -95,7 +95,7 @@ module m2mApp './modules/entra-app-registration.bicep' = if (!empty(m2mClientId)
 
 // ── B2C Configuration (external partner/customer identities) ────────────────
 
-module b2cConfig './modules/entra-b2c-config.bicep' = {
+module b2cConfig '../../azure-platform-iac/modules/identity/entra-b2c.bicep' = {
   name: '${name}-b2c-config-${environment}'
   scope: resourceGroup
   params: {
@@ -113,7 +113,7 @@ module b2cConfig './modules/entra-b2c-config.bicep' = {
 
 // ── Key Vault (secrets for APIM named values) ───────────────────────────────
 
-module keyVault './modules/key-vault.bicep' = {
+module keyVault '../../azure-platform-iac/modules/security/key-vault.bicep' = {
   name: '${name}-kv-${environment}'
   scope: resourceGroup
   params: {
@@ -126,7 +126,7 @@ module keyVault './modules/key-vault.bicep' = {
 
 // ── API Management ──────────────────────────────────────────────────────────
 
-module apim './modules/api-management.bicep' = {
+module apim '../../azure-platform-iac/modules/integration/api-management.bicep' = {
   name: '${name}-apim-${environment}'
   scope: resourceGroup
   params: {
@@ -140,7 +140,7 @@ module apim './modules/api-management.bicep' = {
 }
 
 // Members API with multi-auth
-module membersApi './modules/apim-api.bicep' = {
+module membersApi '../../azure-platform-iac/modules/integration/apim-api.bicep' = {
   name: '${name}-api-members-${environment}'
   scope: resourceGroup
   params: {

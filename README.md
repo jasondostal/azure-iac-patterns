@@ -85,3 +85,30 @@ module serviceBus './service-bus/main.bicep' = {
 - **Private endpoints** — every module has the toggle. Networking module provides all 10 private DNS zones and VNet links.
 - **Idempotent** — modules use resource names derived from `{name}-{service}-{environment}`. Rerunning is safe.
 - **No connection strings in output** — use managed identity + RBAC instead. The storage module outputs the account key only because Functions runtime requires `AzureWebJobsStorage` as a connection string (Azure limitation — not a design choice).
+
+## Composed Patterns (`foundry/`, `identity/`)
+
+`foundry/main.bicep` (full AI agent stack) and `identity/main.bicep` (multi-auth
+API + APIM) are **compositions**, not modules. They wire several primitives
+together into a deployable stack — and they reference the primitives directly
+from [azure-platform-iac](../azure-platform-iac), e.g.:
+
+```bicep
+module foundryHub '../../azure-platform-iac/modules/ai/foundry-hub.bicep' = { ... }
+```
+
+**Single source of truth, no forks.** These compositions do NOT carry their own
+copies of the platform modules. A fix to `key-vault.bicep` (or any primitive) in
+the platform repo reaches these patterns on the next build — there is exactly one
+definition of each module. This requires `azure-platform-iac` to be checked out
+as a sibling directory (same assumption as the reference app):
+
+```
+working/
+├── azure-platform-iac/    ← primitives (the one copy)
+└── azure-iac-patterns/    ← compositions reference ../azure-platform-iac/modules
+```
+
+The self-contained service templates above (`storage`, `service-bus`, etc.) remain
+single-file standalone deployments — they're the "grab one recipe" catalog and
+intentionally have no cross-repo dependency.

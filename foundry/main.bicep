@@ -48,7 +48,7 @@ resource resourceGroup 'Microsoft.Resources/resourceGroups@2024-03-01' = {
 
 // ── AI Search (RAG vector store at scale) ───────────────────────────────────
 
-module aiSearch './modules/ai-search.bicep' = {
+module aiSearch '../../azure-platform-iac/modules/ai/ai-search.bicep' = {
   name: '${name}-search-${environment}'
   scope: resourceGroup
   params: {
@@ -72,7 +72,7 @@ var modelDeployments = [
   { name: 'text-embedding-3-large', modelFormat: 'OpenAI', modelName: 'text-embedding-3-large', modelVersion: '1', skuName: 'GlobalStandard', skuCapacity: 10 }
 ]
 
-module foundryHub './modules/foundry-hub.bicep' = {
+module foundryHub '../../azure-platform-iac/modules/ai/foundry-hub.bicep' = {
   name: '${name}-foundry-${environment}'
   scope: resourceGroup
   params: {
@@ -85,7 +85,7 @@ module foundryHub './modules/foundry-hub.bicep' = {
 
 // ── Foundry Project ─────────────────────────────────────────────────────────
 
-module foundryProject './modules/foundry-project.bicep' = {
+module foundryProject '../../azure-platform-iac/modules/ai/foundry-project.bicep' = {
   name: '${name}-proj-${environment}'
   scope: resourceGroup
   params: {
@@ -100,7 +100,7 @@ module foundryProject './modules/foundry-project.bicep' = {
 
 // ── Key Vault (secrets for storage keys + optional API key fallback) ────────
 
-module keyVault './modules/key-vault.bicep' = {
+module keyVault '../../azure-platform-iac/modules/security/key-vault.bicep' = {
   name: '${name}-ai-kv-${environment}'
   scope: resourceGroup
   params: {
@@ -113,7 +113,7 @@ module keyVault './modules/key-vault.bicep' = {
 
 // ── App Service Plan + App Service (hosts the agent front-end) ──────────────
 
-module appServicePlan './modules/app-service-plan.bicep' = {
+module appServicePlan '../../azure-platform-iac/modules/compute/app-service-plan.bicep' = {
   name: '${name}-ai-asp-${environment}'
   scope: resourceGroup
   params: {
@@ -126,7 +126,7 @@ module appServicePlan './modules/app-service-plan.bicep' = {
   }
 }
 
-module appService './modules/app-service.bicep' = {
+module appService '../../azure-platform-iac/modules/compute/app-service.bicep' = {
   name: '${name}-ai-app-${environment}'
   scope: resourceGroup
   params: {
