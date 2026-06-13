@@ -33,7 +33,7 @@ resource functionApp 'Microsoft.Web/sites@2023-12-01' = {
     serverFarmId: appServicePlanId
     httpsOnly: true
     siteConfig: {
-      linuxFxVersion: 'DOTNET-ISOLATED|9.0'   // .NET 9 isolated process
+      linuxFxVersion: 'DOTNET-ISOLATED|10.0'   // .NET 10 isolated process
       alwaysOn: (environment == 'prod')
       ftpsState: 'Disabled'
       minTlsVersion: '1.2'

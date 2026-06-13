@@ -20,7 +20,7 @@ Standalone Bicep reference modules for common Azure services. Each module is sel
 | **api-management** | API Management (APIM) with API, products, policies | Developer tier for dev, Internal + Partner products, Key Vault named values, Global policy (CORS, rate-limit, header strip), Internal VNet mode |
 | **cosmos-db** | Cosmos DB account + databases + containers | Serverless mode (free in dev), Members + Events databases, Partitioned containers, Composite indexes, Change feed support, Continuous backup (prod), Free tier (dev) |
 | **storage** | Storage account + blob containers + file shares + tables + queues | 5 blob containers (documents, uploads, archive, eventgrid-deadletter, logs), Soft-delete + versioning, CORS, File share (SMB), Table (audit log), Queue (notifications) |
-| **functions** | Function App + 4 function triggers | HTTP trigger, Service Bus queue trigger, Blob trigger, Timer trigger (daily 6 AM), Cosmos DB change feed trigger, VNet integration, .NET 9 isolated |
+| **functions** | Function App + 4 function triggers | HTTP trigger, Service Bus queue trigger, Blob trigger, Timer trigger (daily 6 AM), Cosmos DB change feed trigger, VNet integration, .NET 10 isolated |
 | **networking** | VNet + 6 subnets + 10 private DNS zones | App Service, Private Endpoints, ACI deployment, Functions, API Management, Azure Bastion subnets. DNS zones for SQL, App Service, Blob, Table, Queue, File, Service Bus, Cosmos DB, API Management, Event Grid. Automatic VNet link. |
 
 ## Usage
