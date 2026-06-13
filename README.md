@@ -9,6 +9,7 @@ Standalone Bicep reference modules for common Azure services. Each module is sel
 | [azure-platform-iac](../azure-platform-iac) | Platform modules (generic, reusable templates) |
 | [azure-iac-reference](../azure-iac-reference) | Reference app consuming platform modules |
 | **azure-iac-patterns** (this repo) | Standalone service patterns catalog |
+| [azure-project-starter](../azure-project-starter) | Cookiecutter template — generate a new project repo from platform modules + patterns |
 
 ## Modules
 
