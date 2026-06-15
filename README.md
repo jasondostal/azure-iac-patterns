@@ -6,10 +6,11 @@ Standalone Bicep reference modules for common Azure services. Each module is sel
 
 | Repo | Purpose |
 |------|--------|
-| [azure-platform-iac](../azure-platform-iac) | Platform modules (generic, reusable templates) |
-| [azure-iac-reference](../azure-iac-reference) | Reference app consuming platform modules |
-| **azure-iac-patterns** (this repo) | Standalone service patterns catalog |
-| [azure-project-starter](../azure-project-starter) | Cookiecutter template — generate a new project repo from platform modules + patterns |
+| [azure-platform-iac](../azure-platform-iac) | Platform modules + pipeline templates — the engine |
+| **azure-iac-patterns** (this repo) | Standalone module library — self-contained service templates |
+| [azure-project-starter](../azure-project-starter) | Cookiecutter — generate a new wired-up service repo |
+| [azure-ref-webapp-sql](../azure-ref-webapp-sql) | Example: private-by-default .NET monolith + Azure SQL across 4 environments |
+| [azure-playground](../azure-playground) | Example: cheap, always-on sandbox for fast, near-free experiments |
 
 ## Modules
 
